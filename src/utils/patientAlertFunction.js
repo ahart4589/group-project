@@ -6,8 +6,7 @@ module.exports = {
       currentPatientAlerts.push(patient)
     }
 
-  })
-  
+  })  
   return currentPatientAlerts
   }
 }
