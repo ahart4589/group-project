@@ -17,12 +17,17 @@ module.exports = {
     let auth0domain = `https://${process.env.REACT_APP_AUTH0_DOMAIN}`
 
     let accessTokenResponse = await axios.post(`${auth0domain}/oauth/token`, payload)
+    console.log(1)
     let accessToken = accessTokenResponse.data.access_token
     let userInfoResponse = await axios.get(`${auth0domain}/userinfo?access_token=${accessToken}`)
+    console.log(2)
+
     let userInfo = userInfoResponse.data
 
     let db = req.app.get('db')
     let users = await db.find_healthworker_by_auth_id(userInfo.sub)
+    console.log(3)
+
 
     if(users.length){
       req.session.user = users[0]
