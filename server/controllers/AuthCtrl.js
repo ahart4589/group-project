@@ -26,11 +26,11 @@ module.exports = {
 
     if(users.length){
       req.session.user = users[0]
-      res.redirect('http://localhost:3000/#dashboard')
+      res.redirect(process.env.AUTH_REDIRECT)
     } else {
       let users = await db.create_admin(userInfo)
       req.session.user = users[0]
-      res.redirect('http://localhost:3000/#dashboard')
+      res.redirect(process.env.AUTH_REDIRECT)
     }
     } catch(error) {
       console.log('we have a problem', error)
