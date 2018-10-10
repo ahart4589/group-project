@@ -15,7 +15,7 @@ class Landing extends Component {
     let scope = encodeURIComponent('openid profile email')
     let redirectUri = encodeURIComponent(process.env.REACT_APP_AUTH_CALLBACK)
     let location = `${auth0domain}/authorize?client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&response_type=code`
-
+    console.log('z', redirectUri)
     window.location = location
   }
   render() {
