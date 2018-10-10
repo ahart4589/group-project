@@ -1,7 +1,6 @@
 import * as newFormReducer from '../../redux/reducers/formReducer'
 import reducer from '../../redux/reducers/formReducer'
 
-Date.now = jest.fn(() => 1487076708000) //14.02.2017
 
 const initialState = {
     patientName: '',
@@ -83,6 +82,66 @@ describe('Input patient name', () => {
             {
                 type: 'PT_NAME_INPUT',
                 payload: 'Forest'
+            }
+        )
+    })
+})
+
+
+// 
+
+describe('Input patient phone', () => {
+    let event = {
+        target: {
+            value: 18312247565
+        }
+    }
+    it('Returns the patient phone as the payload', () => {
+        expect(newFormReducer.handlePTInputPhone(event).payload)
+        .toBe(18312247565)
+    })
+    it('Returns the action object', () => {
+        expect(newFormReducer.handlePTInputPhone(event)).toEqual(
+            {
+                type: 'PT_PHONE_INPUT',
+                payload: 18312247565
+            }
+        )
+    })
+})
+
+describe('Input patient address', () => {
+    let event = {
+        target: {
+            value: 'duplicate.publications.workmanlike'
+        }
+    }
+    it('Returns the patient three word address as payload', () => {
+        expect(newFormReducer.handlePTInputAddress(event).payload)
+        .toBe('duplicate.publications.workmanlike')
+    })
+    it('Returns action object', () => {
+        expect(newFormReducer.handlePTInputAddress(event)).toEqual (
+            {
+                type: 'PT_ADDRESS_INPUT',
+                payload: 'duplicate.publications.workmanlike'
+            }
+        )
+    })
+})
+
+describe('Input coordinates function', () => {
+    it('Returns the expected value of the healthworker input coordinates to be truthy', () => {
+        expect(newFormReducer.handleHWInputCoordinates(latitude, longitude)).toBeTruthy()
+    })
+    it ('Returns the correct action', () =>{
+        expect(newFormReducer.handleHWInputCoordinates(latitude, longitude)).toEqual(
+            {
+                type: 'HW_INPUT_COORDINATES',
+                payload: {
+                    latitude,
+                    longitude
+                }
             }
         )
     })

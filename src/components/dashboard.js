@@ -302,7 +302,6 @@ class Dashboard extends Component {
     //This sets interval for reload of getting patient data
 
     const alertUpdate = setInterval(() => {
-      console.log('ARE YOU FIRING??')
       // toast.dismiss()
       this.props.getPatients()
     }, 10000)
