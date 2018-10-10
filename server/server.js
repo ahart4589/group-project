@@ -28,6 +28,7 @@ app.use(bodyParser.json())
 //URL encoded is for parsing sms from twilio
 app.use(urlencoded({ extended: true }));
 
+app.use(express.static(__dirname + '/../build'))
 
 massive(CONNECTION_STRING).then(db => {
   app.set('db', db)
